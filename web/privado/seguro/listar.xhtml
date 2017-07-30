@@ -57,17 +57,17 @@
                         <p:outputLabel value="#{obj.id}"/>
                     </p:column>
                     <p:column headerText="Data">
-                    <p:outputLabel value="#{obj.data}">
+                        <p:outputLabel value="#{obj.data}">
                             <f:converter converterId="converterCalendar"/>
                         </p:outputLabel>
                     </p:column>
                     <p:column headerText="Inicio Vigência">
-                    <p:outputLabel value="#{obj.inicioVigencia}">
+                        <p:outputLabel value="#{obj.inicioVigencia}">
                             <f:converter converterId="converterCalendar"/>
                         </p:outputLabel>
                     </p:column>
                     <p:column headerText="Fim Vigência">
-                    <p:outputLabel value="#{obj.fimVigencia}">
+                        <p:outputLabel value="#{obj.fimVigencia}">
                             <f:converter converterId="converterCalendar"/>
                         </p:outputLabel>
                     </p:column>
@@ -121,29 +121,29 @@
                                     <p:outputLabel value="Data" for="txtData"/>
                                     <p:calendar  
                                         value="#{controleSeguro.objeto.data}"
-                                                pattern="dd/MM/yyyy"
-                                                id="txtData"
-                                                locale="pt_BR" size="12" mask="true">
-                                                <f:converter converterId="converterCalendar"/>
-                                   </p:calendar>
-                                    
+                                        pattern="dd/MM/yyyy"
+                                        id="txtData"
+                                        locale="pt_BR" size="12" mask="true">
+                                        <f:converter converterId="converterCalendar"/>
+                                    </p:calendar>
+
                                     <p:outputLabel value="Início Vigência" for="txtInicioVigencia"/>
                                     <p:calendar  
                                         value="#{controleSeguro.objeto.inicioVigencia}"
-                                                pattern="dd/MM/yyyy"
-                                                id="txtInicioVigencia"
-                                                locale="pt_BR" size="12" mask="true">
-                                                <f:converter converterId="converterCalendar"/>
-                                   </p:calendar>
-                                    
+                                        pattern="dd/MM/yyyy"
+                                        id="txtInicioVigencia"
+                                        locale="pt_BR" size="12" mask="true">
+                                        <f:converter converterId="converterCalendar"/>
+                                    </p:calendar>
+
                                     <p:outputLabel value="Fim Vigência" for="txtFimVigencia"/>
                                     <p:calendar  
                                         value="#{controleSeguro.objeto.fimVigencia}"
-                                                pattern="dd/MM/yyyy"
-                                                id="txtFimVigencia"
-                                                locale="pt_BR" size="12" mask="true">
-                                                <f:converter converterId="converterCalendar"/>
-                                   </p:calendar>
+                                        pattern="dd/MM/yyyy"
+                                        id="txtFimVigencia"
+                                        locale="pt_BR" size="12" mask="true">
+                                        <f:converter converterId="converterCalendar"/>
+                                    </p:calendar>
 
                                     <p:outputLabel value="Total" for="txtValorTotal"/>
                                     <p:inputText value="#{controleSeguro.objeto.valorTotal}" id="txtValorTotal" 
@@ -161,7 +161,7 @@
                                                        var="c"
                                                        itemLabel="#{c.nome}"/>
                                     </p:selectOneMenu>
-                                    
+
                                     <p:outputLabel value="Carro" for="selectCarro"/>
                                     <p:selectOneMenu value="#{controleSeguro.objeto.carro}"
                                                      id="selectCarro">
@@ -173,47 +173,85 @@
                                 </p:panelGrid>                              
                             </div>                            
                         </p:tab>
-                        
-                         <p:tab title="Coberturas">
-                             <p:dataTable value="#{controleSeguro.objeto.listaCoberturas}"
+
+                        <p:tab title="Coberturas">
+                            <p:dataTable value="#{controleSeguro.objeto.listaCoberturas}"
                                          var="dis" rowIndexVar="idxdis" id="listaCoberturas">
                                 <f:facet name="header">
-                                        <p:commandButton value="Nova Cobertura"
-                                                         actionListener="#{controleSeguro.novaCobertura()}"
-                                             update=":formCobertura"
-                                             icon="ui-icon-plus"
-                                             id="btnNovaCobertura"
-                                             process="btnNovaCobertura"
-                                             oncomplete="PF('dlgCobertura').show();" />
+                                    <p:commandButton value="Nova Cobertura"
+                                                     actionListener="#{controleSeguro.novaCobertura()}"
+                                                     update=":formCobertura"
+                                                     icon="ui-icon-plus"
+                                                     id="btnNovaCobertura"
+                                                     process="btnNovaCobertura"
+                                                     oncomplete="PF('dlgCobertura').show();" />
                                 </f:facet>
-                                
+
                                 <p:column headerText="Cobertura">
                                     <p:outputLabel value="#{dis.descricao}" />
                                 </p:column>
-                                
+
                                 <p:column headerText="Ações">
-                                    
-                                     <p:commandButton id="btnAlterarCobertura"
-                                                         icon="ui-icon-pencil"
-                                                         actionListener="#{controleSeguro.alterarCobertura(index)}"
-                                                         update=":formCobertura"
-                                                         process="btnAlterarCobertura" 
-                                                         oncomplete="PF('dlgCobertura').show();"
-                                                         />
-                                     
+
+                                    <p:commandButton id="btnAlterarCobertura"
+                                                     icon="ui-icon-pencil"
+                                                     actionListener="#{controleSeguro.alterarCobertura(index)}"
+                                                     update=":formCobertura"
+                                                     process="btnAlterarCobertura" 
+                                                     oncomplete="PF('dlgCobertura').show();"
+                                                     />
+
                                     <p:commandButton id="btnRemoverCobertura"
                                                      actionListener="#{controleSeguro.removerCobertura(idxdis)}"
                                                      process="btnRemoverCobertura"
                                                      update="listaCoberturas :formEdicao:growl"
                                                      icon="ui-icon-trash" />
                                 </p:column>
-                                
+
                             </p:dataTable>
                         </p:tab>
+
+                        <p:tab title="Sinistros">
+                            <p:dataTable value="#{controleSeguro.objeto.listaSinistro}"
+                                         var="sin" rowIndexVar="idxdis" id="listaSinistros">
+                                <f:facet name="header">
+                                    <p:commandButton value="Novo Sinistro"
+                                                     actionListener="#{controleSeguro.novaSinistro()}"
+                                                     update=":formSinistro"
+                                                     icon="ui-icon-plus"
+                                                     id="btnNovaSinistro"
+                                                     process="btnNovaSinistro"
+                                                     oncomplete="PF('dlgSinistro').show();" />
+                                </f:facet>
+
+                                <p:column headerText="Sinistros">
+                                    <p:outputLabel value="#{sin.nome}" />
+                                </p:column>
+
+                                <p:column headerText="Ações">
+
+                                    <p:commandButton id="btnAlterarSinistro"
+                                                     icon="ui-icon-pencil"
+                                                     actionListener="#{controleSeguro.alterarSinistro(index)}"
+                                                     update=":formSinistro"
+                                                     process="btnAlterarSinistro" 
+                                                     oncomplete="PF('dlgSinistro').show();"
+                                                     />
+
+                                    <p:commandButton id="btnRemoverSinistro"
+                                                     actionListener="#{controleSeguro.removerSinistro(idxdis)}"
+                                                     process="btnRemoverSinistro"
+                                                     update="listaSinistros :formEdicao:growl"
+                                                     icon="ui-icon-trash" />
+                                </p:column>
+
+                            </p:dataTable>
+                        </p:tab>
+
                     </p:tabView>
                 </h:form>         
             </p:dialog>
-            
+
             <p:dialog header="Edição de Cobertura"
                       widgetVar="dlgCobertura"
                       resizable="false" modal="true" >
@@ -230,22 +268,67 @@
                                                  oncomplete="if(!args.validationFailed) PF('dlgCobertura').hide();"/>
                             </div>
                         </f:facet>
-                        
+
                         <p:outputLabel value="Id" for="txtId"/>
                         <p:inputText id="txtId" value="#{controleSeguro.cobertura.id}" placeholder="Obrigatório" readonly="true"/>
-                        
+
                         <p:outputLabel value="Descrição" for="txtDescricao"/>
                         <p:inputText id="txtDescricao" value="#{controleSeguro.cobertura.descricao}"
-                                         size="50" maxlength="50" placeholder="Obrigatório"/>
+                                     size="50" maxlength="50" placeholder="Obrigatório"/>
 
                         <p:outputLabel value="Valor" for="txtValor"/>
                         <p:inputText id="txtValor" value="#{controleSeguro.cobertura.valor}"
-                                         size="50" maxlength="50" placeholder="Obrigatório"/>
-                        
+                                     size="50" maxlength="50" placeholder="Obrigatório"/>
+
                     </p:panelGrid>
                 </h:form>
             </p:dialog>
-            
+
+            <p:dialog header="Edição de Sinistros"
+                      widgetVar="dlgSinistro"
+                      resizable="false" modal="true" >
+                <h:form id="formSinistro">
+                    <p:growl />
+                    <p:panelGrid columns="2">
+                        <f:facet name="footer">
+                            <div align="center">
+                                <p:commandButton value="Salvar" icon="ui-icon-disk"
+                                                 action="#{controleSeguro.adicionarSinistro()}"
+                                                 update=":formEdicao:tab:listaSinistros"
+                                                 process=":formSinistro btnSalvarSinistro"
+                                                 id="btnSalvarSinistro"
+                                                 oncomplete="if(!args.validationFailed) PF('dlgSinistro').hide();"/>
+                            </div>
+                        </f:facet>
+
+                        <p:outputLabel value="Id" for="txtId"/>
+                        <p:inputText id="txtId" value="#{controleSeguro.sinistro.id}" placeholder="Obrigatório" readonly="true"/>
+
+                        <p:outputLabel value="Descrição" for="txtDescricao"/>
+                        <p:inputText id="txtDescricao" value="#{controleSeguro.sinistro.nome}"
+                                     size="50" maxlength="50" placeholder="Obrigatório"/>
+
+                        <p:outputLabel value="Data" for="txtData"/>
+                        <p:calendar  
+                            value="#{controleSeguro.sinistro.data}"
+                            pattern="dd/MM/yyyy"
+                            id="txtData"
+                            locale="pt_BR" size="12" mask="true">
+                            <f:converter converterId="converterCalendar"/>
+                        </p:calendar>
+
+                        <p:outputLabel value="Cidade" for="txtCidade"/>
+                        <p:inputText id="txtCidade" value="#{controleSeguro.sinistro.cidade}"
+                                     size="50" maxlength="50" placeholder="Obrigatório"/>
+
+                        <p:outputLabel value="Estado" for="txtEstado"/>
+                        <p:inputText id="txtEstado" value="#{controleSeguro.sinistro.estado}"
+                                     size="50" maxlength="50" placeholder="Obrigatório"/>
+
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+
         </ui:define>
     </ui:composition>	
 </html>
