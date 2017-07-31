@@ -10,8 +10,8 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author Prof. Me. Jorge Luis Boeira Bavaresco
- * @email jorge.bavaresco@passofundo.ifsul.edu.br
+ * @author Crisley Alves
+ * @email crisleyalvesphx@gmail.com
  * @organization IFSUL - Campus Passo Fundo
  */
 @ManagedBean(name = "controleCorretor")

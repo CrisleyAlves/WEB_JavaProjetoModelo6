@@ -7,14 +7,13 @@ import br.edu.ifsul.modelo.Carro;
 import br.edu.ifsul.modelo.Pessoa;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
-import java.util.HashMap;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author Prof. Me. Jorge Luis Boeira Bavaresco
- * @email jorge.bavaresco@passofundo.ifsul.edu.br
+ * @author Crisley Alves
+ * @email crisleyalvesphx@gmail.com
  * @organization IFSUL - Campus Passo Fundo
  */
 @ManagedBean(name = "controleCarro")

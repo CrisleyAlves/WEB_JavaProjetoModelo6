@@ -12,13 +12,14 @@ import br.edu.ifsul.modelo.Seguro;
 import br.edu.ifsul.util.Util;
 import br.ifsul.edu.modelo.Sinistro;
 import java.io.Serializable;
-import java.util.HashMap;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author crisley
+ * @author Crisley Alves
+ * @email crisleyalvesphx@gmail.com
+ * @organization IFSUL - Campus Passo Fundo
  */
 @ManagedBean(name = "controleSeguro")
 @SessionScoped
